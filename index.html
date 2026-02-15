@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Festa | The Ramadan Experience</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <div class="ambient-light">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <nav>
+        <div class="logo">FESTA</div>
+        <a href="#book" class="btn-gold" style="padding: 0.6rem 1.2rem; min-height: auto; font-size: 0.8rem;">Book
+            Slot</a>
+    </nav>
+
+    <main>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <!-- Top Tagline -->
+            <div class="hero-tagline">
+                <span class="tagline-line"></span>
+                <span class="tagline-text">Make the Ifthar Special</span>
+                <span class="tagline-line"></span>
+            </div>
+
+            <h1>Ramadan<br>Nights</h1>
+            <p class="hero-subtitle">Where tradition meets luxury under the crescent moon</p>
+            <div class="glass-panel hero-glass-box">
+                <p style="margin-bottom: 2rem; word-spacing: 3px;">
+                    We curate ethereal <span class="brand-font">Iftar</span> gatherings.
+                    <span class="hero-keywords">
+                        <span class="keyword">Luxury</span><span class="keyword-dot">·</span>
+                        <span class="keyword">Tradition</span><span class="keyword-dot">·</span>
+                        <span class="keyword">Serenity</span>
+                    </span>
+                </p>
+                <a href="#services" class="btn-gold btn-shimmer" style="width: 100%;">
+                    <span class="btn-text">View What We Serve</span>
+                    <span class="shimmer"></span>
+                </a>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="hero-scroll-hint">
+                <span>Experience the Ramadan Magic</span>
+                <div class="scroll-arrow">↓</div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section class="services" id="services">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: var(--gold-primary);">The
+                Experience</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Crafted for the Holy Month</p>
+
+            <div class="grid-cards">
+                <div class="glass-panel card-content service-card">
+                    <div class="icon-gold">⛺</div>
+                    <h3 style="font-size: 1.4rem;">Royal Majlis</h3>
+                    <p>Climate-controlled luxury tents with velvet seating and ambient arabesque lighting.</p>
+                    <span class="card-detail">Capacity: 20–200 guests</span>
+                    <!-- <span class="card-cta">Explore →</span> -->
+                </div>
+                <div class="glass-panel card-content service-card">
+                    <div class="icon-gold">🍲</div>
+                    <h3 style="font-size: 1.4rem;">Gourmet Iftar</h3>
+                    <p>Live fusion cooking stations managed by 5-star executive chefs.</p>
+                    <span class="card-detail">15+ cuisines available</span>
+                    <!-- <span class="card-cta">Explore →</span> -->
+                </div>
+                <div class="glass-panel card-content service-card">
+                    <div class="icon-gold">✨</div>
+                    <h3 style="font-size: 1.4rem;">Atmosphere</h3>
+                    <p>Bespoke lanterns, oud scenting, and projection mapping decor.</p>
+                    <span class="card-detail">Fully customizable themes</span>
+                    <!-- <span class="card-cta">Explore →</span> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Sequence Section -->
+        <section class="sequence-wrapper" id="sequence">
+
+            <!-- Radial Glow Backdrop -->
+            <div class="seq-glow"></div>
+
+            <!-- Crescent Moon (scroll-animated) -->
+            <svg class="seq-crescent" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                <path d="M120,20 A80,80 0 1,0 120,180 A55,55 0 1,1 120,20Z" fill="var(--gold-primary)" opacity="0.25" />
+            </svg>
+
+            <!-- Expanding Rings -->
+            <div class="seq-ring seq-ring-1"></div>
+            <div class="seq-ring seq-ring-2"></div>
+            <div class="seq-ring seq-ring-3"></div>
+
+            <!-- Floating Star Particles -->
+            <span class="seq-star s1">✦</span>
+            <span class="seq-star s2">✧</span>
+            <span class="seq-star s3">✦</span>
+            <span class="seq-star s4">✧</span>
+            <span class="seq-star s5">✦</span>
+            <span class="seq-star s6">✧</span>
+            <span class="seq-star s7">✦</span>
+            <span class="seq-star s8">✧</span>
+            <span class="seq-star s9">✦</span>
+            <span class="seq-star s10">✧</span>
+
+            <!-- Horizontal Ornament Lines -->
+            <div class="seq-line seq-line-left"></div>
+            <div class="seq-line seq-line-right"></div>
+
+            <div class="moon-phase-text p1">REFLECTION🌙 </div>
+            <div class="moon-phase-text p2">🕌GATHERING </div>
+            <div class="moon-phase-text p3">CELEBRATION🎉 </div>
+        </section>
+
+        <!-- Works Section -->
+        <section class="works">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: var(--gold-primary);">Our
+                Majlis</h2>
+            <div class="swiper works-swiper">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide">
+                        <div class="glass-panel work-card">
+                            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop"
+                                class="work-img" alt="Suhoor">
+                            <div class="work-overlay">
+                                <h3>Grand Suhoor</h3>
+                                <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel work-card">
+                            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop"
+                                class="work-img" alt="Suhoor">
+                            <div class="work-overlay">
+                                <h3>Grand Suhoor</h3>
+                                <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel work-card">
+                            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop"
+                                class="work-img" alt="Suhoor">
+                            <div class="work-overlay">
+                                <h3>Grand Suhoor</h3>
+                                <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel work-card">
+                            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop"
+                                class="work-img" alt="Suhoor">
+                            <div class="work-overlay">
+                                <h3>Grand Suhoor</h3>
+                                <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel work-card">
+                            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop"
+                                class="work-img" alt="Suhoor">
+                            <div class="work-overlay">
+                                <h3>Grand Suhoor</h3>
+                                <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-slide">
+                        <div class="glass-panel work-card">
+                            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop"
+                                class="work-img" alt="Suhoor">
+                            <div class="work-overlay">
+                                <h3>Grand Suhoor</h3>
+                                <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
+
+        <!-- Footer Section -->
+        <footer id="book">
+            <section>
+                <div class="booking-panel glass-panel">
+                    <div class="booking-header">
+                        <span class="booking-badge">Limited Spots</span>
+                        <h2>Reserve Your Night</h2>
+                        <p class="booking-sub">Secure your Ramadan experience before it's gone</p>
+                    </div>
+
+                    <form id="booking-form">
+                        <!-- Name -->
+                        <div class="form-group">
+                            <label for="guest-name">Guest Name</label>
+                            <input type="text" id="guest-name" placeholder="Enter your name" required>
+                        </div>
+
+                        <!-- Guest Count -->
+                        <div class="form-group">
+                            <label for="guest-count">Number of Guests</label>
+                            <input type="number" id="guest-count" min="1" max="500" placeholder="How many guests?"
+                                required>
+                        </div>
+
+
+                        <!-- Ramadan Date (Calendar UI) -->
+                        <div class="form-group">
+                            <label>Select Date</label>
+                            <input type="hidden" id="ramadan-date" required>
+                            <div class="calendar-wrapper">
+                                <div class="calendar-header">
+                                    <span class="calendar-title">Ramadan 2026</span>
+                                    <span style="font-size: 0.7rem; opacity: 0.6;">Feb — Mar 2026</span>
+                                </div>
+                                <div class="calendar-grid">
+                                    <div class="day-label">Sun</div>
+                                    <div class="day-label">Mon</div>
+                                    <div class="day-label">Tue</div>
+                                    <div class="day-label">Wed</div>
+                                    <div class="day-label">Thu</div>
+                                    <div class="day-label">Fri</div>
+                                    <div class="day-label">Sat</div>
+
+                                    <!-- Month Separator -->
+                                    <div class="month-separator">February 2026</div>
+                                    <!-- Week 1: Feb 15-21 -->
+                                    <div class="calendar-day" style="opacity: 0; pointer-events: none;"></div>
+                                    <div class="calendar-day" style="opacity: 0; pointer-events: none;"></div>
+                                    <div class="calendar-day" style="opacity: 0; pointer-events: none;"></div>
+                                    <div class="calendar-day" data-val="Ramadan 1 — Wed, 18 Feb"><span
+                                            class="day-number">18</span><span class="greg-date">RMD 1</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 2 — Thu, 19 Feb"><span
+                                            class="day-number">19</span><span class="greg-date">RMD 2</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 3 — Fri, 20 Feb"><span
+                                            class="day-number">20</span><span class="greg-date">RMD 3</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 4 — Sat, 21 Feb"><span
+                                            class="day-number">21</span><span class="greg-date">RMD 4</span></div>
+
+                                    <!-- Week 2: Feb 22-28 -->
+                                    <div class="calendar-day" data-val="Ramadan 5 — Sun, 22 Feb"><span
+                                            class="day-number">22</span><span class="greg-date">RMD 5</span></div>
+                                    <div class="calendar-day booked"><span class="day-number">23</span><span
+                                            class="greg-date">RMD 6</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 7 — Tue, 24 Feb"><span
+                                            class="day-number">24</span><span class="greg-date">RMD 7</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 8 — Wed, 25 Feb"><span
+                                            class="day-number">25</span><span class="greg-date">RMD 8</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 9 — Thu, 26 Feb"><span
+                                            class="day-number">26</span><span class="greg-date">RMD 9</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 10 — Fri, 27 Feb"><span
+                                            class="day-number">27</span><span class="greg-date">RMD 10</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 11 — Sat, 28 Feb"><span
+                                            class="day-number">28</span><span class="greg-date">RMD 11</span></div>
+
+                                    <!-- Month Separator -->
+                                    <div class="month-separator">March 2026</div>
+
+                                    <!-- Week 3: Mar 1-7 -->
+                                    <div class="calendar-day" data-val="Ramadan 12 — Sun, 1 Mar"><span
+                                            class="day-number">1</span><span class="greg-date">RMD 12</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 13 — Mon, 2 Mar"><span
+                                            class="day-number">2</span><span class="greg-date">RMD 13</span></div>
+                                    <div class="calendar-day booked"><span class="day-number">3</span><span
+                                            class="greg-date">RMD 14</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 15 — Wed, 4 Mar"><span
+                                            class="day-number">4</span><span class="greg-date">RMD 15</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 16 — Thu, 5 Mar"><span
+                                            class="day-number">5</span><span class="greg-date">RMD 16</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 17 — Fri, 6 Mar"><span
+                                            class="day-number">6</span><span class="greg-date">RMD 17</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 18 — Sat, 7 Mar"><span
+                                            class="day-number">7</span><span class="greg-date">RMD 18</span></div>
+
+                                    <!-- Week 4: Mar 8-14 -->
+                                    <div class="calendar-day" data-val="Ramadan 19 — Sun, 8 Mar"><span
+                                            class="day-number">8</span><span class="greg-date">RMD 19</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 20 — Mon, 9 Mar"><span
+                                            class="day-number">9</span><span class="greg-date">RMD 20</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 21 — Tue, 10 Mar"><span
+                                            class="day-number">10</span><span class="greg-date">RMD 21</span></div>
+                                    <div class="calendar-day booked"><span class="day-number">11</span><span
+                                            class="greg-date">RMD 22</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 23 — Thu, 12 Mar"><span
+                                            class="day-number">12</span><span class="greg-date">RMD 23</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 24 — Fri, 13 Mar"><span
+                                            class="day-number">13</span><span class="greg-date">RMD 24</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 25 — Sat, 14 Mar"><span
+                                            class="day-number">14</span><span class="greg-date">RMD 25</span></div>
+
+                                    <!-- Week 5: Mar 15-20 -->
+                                    <div class="calendar-day" data-val="Ramadan 26 — Sun, 15 Mar"><span
+                                            class="day-number">15</span><span class="greg-date">RMD 26</span></div>
+                                    <div class="calendar-day booked"><span class="day-number">16</span><span
+                                            class="greg-date">RMD 27</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 28 — Tue, 17 Mar"><span
+                                            class="day-number">17</span><span class="greg-date">RMD 28</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 29 — Wed, 18 Mar"><span
+                                            class="day-number">18</span><span class="greg-date">RMD 29</span></div>
+                                    <div class="calendar-day" data-val="Ramadan 30 — Thu, 19 Mar"><span
+                                            class="day-number">19</span><span class="greg-date">RMD 30</span></div>
+                                    <div class="calendar-day" data-val="Eid Expected — Fri, 20 Mar"><span
+                                            class="day-number">20</span><span class="greg-date">EID?</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Venue Selector -->
+                        <div class="form-group">
+                            <label>Select Venue</label>
+                            <div class="venue-options">
+                                <label class="venue-card">
+                                    <input type="radio" name="venue" value="The Grand Tent" required>
+                                    <div class="venue-inner">
+                                        <span class="venue-icon">⛺</span>
+                                        <span class="venue-name">The Grand Tent</span>
+                                    </div>
+                                </label>
+                                <label class="venue-card">
+                                    <input type="radio" name="venue" value="Rooftop Terrace">
+                                    <div class="venue-inner">
+                                        <span class="venue-icon">🌙</span>
+                                        <span class="venue-name">Rooftop Terrace</span>
+                                    </div>
+                                </label>
+                                <label class="venue-card">
+                                    <input type="radio" name="venue" value="Private Villa">
+                                    <div class="venue-inner">
+                                        <span class="venue-icon">🏛️</span>
+                                        <span class="venue-name">Private Villa</span>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Submit -->
+                        <button type="submit" class="btn-gold btn-shimmer btn-whatsapp">
+                            <span class="btn-text">Book via WhatsApp</span>
+                            <span class="shimmer"></span>
+                        </button>
+                    </form>
+                </div>
+                <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Festa Events. All Right
+                    Reserved</p>
+            </section>
+        </footer>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+
+</html>

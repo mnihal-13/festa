@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Festa | Exclusive Ramadan Experiences</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-color: #020205;
+            --text-color: #f0f0f0;
+            --gold: #D4AF37;
+            --gold-dim: #8a7020;
+            --surface: #0a0a12;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .serif {
+            font-family: 'Cinzel', serif;
+        }
+
+        /* --- UI Elements --- */
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-transform: uppercase;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: var(--gold);
+            color: var(--bg-color);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--bg-color);
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background: #fff;
+            border-color: #fff;
+        }
+
+        /* --- Header --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--gold);
+        }
+
+        /* --- Three.js Canvas --- */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: -1;
+            opacity: 0.6;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0; /* JS reveal */
+            transform: translateY(30px);
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            color: #aaa;
+            opacity: 0; /* JS reveal */
+            transform: translateY(20px);
+        }
+
+        .hero-cta {
+            opacity: 0; /* JS reveal */
+        }
+
+        /* --- Services Section --- */
+        .services {
+            padding: 8rem 5%;
+            background: linear-gradient(to bottom, transparent, var(--surface));
+        }
+
+        .section-header {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.05);
+            padding: 2.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold-dim);
+        }
+
+        .service-card h3 {
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        /* --- Sequence Scroll (Ramadan Aesthetic) --- */
+        .sequence-section {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: var(--bg-color);
+            overflow: hidden;
+        }
+
+        .sequence-content {
+            text-align: center;
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+        }
+
+        .sequence-text {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 5px;
+        }
+
+        .sequence-sub {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            color: #ccc;
+        }
+
+        /* --- Works Showcase --- */
+        .works {
+            padding: 8rem 5%;
+            background: var(--bg-color);
+        }
+
+        .work-gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .work-item {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: #222;
+            overflow: hidden;
+            cursor: pointer;
+        }
+        
+        /* Placeholder for images */
+        .work-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+            opacity: 0.7;
+        }
+
+        .work-item:hover img {
+            transform: scale(1.05);
+            opacity: 1;
+        }
+
+        .work-info {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            z-index: 2;
+        }
+
+        /* --- Instagram / Social Proof --- */
+        .instagram {
+            padding: 6rem 5%;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .insta-item {
+            aspect-ratio: 1;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            color: #555;
+            transition: opacity 0.3s;
+        }
+
+        .insta-item:hover {
+            opacity: 0.8;
+        }
+
+        /* --- Footer --- */
+        footer {
+            padding: 4rem 5%;
+            background: var(--surface);
+            text-align: center;
+            border-top: 1px solid var(--gold-dim);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .work-gallery, .insta-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="canvas-container"></div>
+
+    <nav>
+        <div class="logo">FESTA</div>
+        <a href="#book" class="btn">Book Now</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Ramadan Nights<br><span style="color: var(--gold)">By Festa</span></h1>
+            <p>Curating soulful Iftar gatherings and luxurious Suhoor events. Experience the essence of tradition reimagined.</p>
+            <div class="hero-cta">
+                <a href="#book" class="btn btn-primary">Reserve Your Slot</a>
+            </div>
+        </section>
+
+        <section class="services">
+            <div class="section-header">
+                <h2>Our Expertise</h2>
+                <p>Comprehensive event management for the Holy Month</p>
+            </div>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Corporate Iftars</h3>
+                    <p>High-end catering and decor for large scale corporate gatherings with brand integration.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Private Suhoors</h3>
+                    <p>Intimate, luxuriously designed majlis setups for exclusive private networking.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Decor & Ambience</h3>
+                    <p>Bespoke lighting, floral arrangements, and thematic structures evoking the spirit of Ramadan.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sequence-section" id="story-trigger">
+            <div class="sequence-content step-1">
+                <h2 class="sequence-text">Gather</h2>
+                <p class="sequence-sub">Unite under the crescent moon.</p>
+            </div>
+            <div class="sequence-content step-2">
+                <h2 class="sequence-text">Feast</h2>
+                <p class="sequence-sub">Culinary masterpieces meet tradition.</p>
+            </div>
+            <div class="sequence-content step-3">
+                <h2 class="sequence-text">Connect</h2>
+                <p class="sequence-sub">Memories that last beyond the night.</p>
+            </div>
+        </section>
+
+        <section class="works">
+            <div class="section-header">
+                <h2>Recent Works</h2>
+            </div>
+            <div class="work-gallery">
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1000&auto=format&fit=crop" alt="Event 1">
+                    <div class="work-info">
+                        <h3>The Grand Majlis</h3>
+                        <p>Doha, 2024</p>
+                    </div>
+                </div>
+                <div class="work-item">
+                    <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=1000&auto=format&fit=crop" alt="Event 2">
+                    <div class="work-info">
+                        <h3>Sunset Iftar</h3>
+                        <p>Dubai, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="instagram">
+            <div class="section-header">
+                <h3 style="color: #fff">@FestaEvents</h3>
+                <p>Follow our journey</p>
+            </div>
+            <div class="insta-grid">
+                <div class="insta-item">IG POST 1</div>
+                <div class="insta-item">IG POST 2</div>
+                <div class="insta-item">IG POST 3</div>
+                <div class="insta-item">IG POST 4</div>
+            </div>
+        </section>
+
+        <footer id="book">
+            <h2 class="serif" style="font-size: 3rem; margin-bottom: 2rem; color: var(--gold);">Ready to Host?</h2>
+            <p style="margin-bottom: 2rem;">Slots for Ramadan 2025 are filling up fast.</p>
+            <a href="#" class="btn btn-primary">Book Consultation</a>
+            <div style="margin-top: 4rem; color: #555; font-size: 0.8rem;">
+                &copy; 2025 Festa Event Management. All rights reserved.
+            </div>
+        </footer>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // --- 1. THREE.JS BACKGROUND ---
+        const scene = new THREE.Scene();
+        // Add subtle fog for depth
+        scene.fog = new THREE.FogExp2(0x020205, 0.002);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(window.devicePixelRatio);
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Particles (representing stars/embers)
+        const geometry = new THREE.BufferGeometry();
+        const particlesCount = 1500;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            // Spread particles wide
+            posArray[i] = (Math.random() - 0.5) * 15;
+        }
+
+        geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+        // Gold particles material
+        const material = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xD4AF37,
+            transparent: true,
+            opacity: 0.8,
+        });
+
+        const particlesMesh = new THREE.Points(geometry, material);
+        scene.add(particlesMesh);
+
+        camera.position.z = 3;
+
+        // Interactive Mouse Movement
+        let mouseX = 0;
+        let mouseY = 0;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = event.clientX / window.innerWidth - 0.5;
+            mouseY = event.clientY / window.innerHeight - 0.5;
+        });
+
+        // Animation Loop
+        const clock = new THREE.Clock();
+
+        function animate() {
+            const elapsedTime = clock.getElapsedTime();
+
+            // Rotate entire system slowly
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = -mouseY * 0.2;
+            particlesMesh.rotation.y += mouseX * 0.2;
+
+            // Gentle wave effect on particles
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+        // Window Resize Handle
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+
+        // --- 2. GSAP ANIMATIONS ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Reveal
+        const heroTl = gsap.timeline();
+        heroTl.to(".hero h1", { opacity: 1, y: 0, duration: 1, ease: "power3.out" })
+              .to(".hero p", { opacity: 1, y: 0, duration: 1, ease: "power3.out" }, "-=0.5")
+              .to(".hero-cta", { opacity: 1, duration: 1 }, "-=0.5");
+
+        // Service Cards Hover Effect (Staggered fade in on scroll)
+        gsap.from(".service-card", {
+            scrollTrigger: {
+                trigger: ".services",
+                start: "top 80%",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2
+        });
+
+        // Sequence Scroll (The "Ramadan Aesthetic" Story)
+        const seqTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".sequence-section",
+                start: "top top",
+                end: "+=3000", // Pin for 3000px of scrolling
+                scrub: true,
+                pin: true,
+            }
+        });
+
+        // Step 1: Fade in Gather
+        seqTl.to(".step-1", { opacity: 1, duration: 1 })
+             .to(".step-1", { opacity: 0, duration: 1 }, "+=1") // Hold then fade out
+        // Step 2: Fade in Feast
+             .to(".step-2", { opacity: 1, duration: 1 })
+             .to(".step-2", { opacity: 0, duration: 1 }, "+=1")
+        // Step 3: Fade in Connect
+             .to(".step-3", { opacity: 1, duration: 1 });
+
+        // Work Gallery Parallax
+        gsap.utils.toArray(".work-item img").forEach(img => {
+            gsap.to(img, {
+                yPercent: 20,
+                ease: "none",
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>

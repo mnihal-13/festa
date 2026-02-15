@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Festa | The Ramadan Experience</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg-deep: #030308;
+            --gold-primary: #D4AF37;
+            --gold-light: #F4E4BC;
+            --glass-surface: rgba(20, 20, 30, 0.65); /* More opacity for mobile readability */
+            --glass-border: rgba(212, 175, 55, 0.3);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg-deep);
+            color: #fff;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+            /* Prevent horizontal scroll on mobile */
+            width: 100vw; 
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, .brand-font {
+            font-family: 'Cinzel Decorative', serif;
+            font-weight: 700; /* Bolder for small screens */
+        }
+
+        /* --- Mobile-First Typography --- */
+        p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: #ccc;
+        }
+
+        /* --- Ambient Background --- */
+        .ambient-light {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+        
+        .blob {
+            position: absolute;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob-1 { top: -10%; left: -20%; width: 80vw; height: 80vw; background: radial-gradient(circle, #4a3b10 0%, transparent 70%); }
+        .blob-2 { bottom: -10%; right: -20%; width: 90vw; height: 90vw; background: radial-gradient(circle, #0f1225 0%, transparent 70%); animation-delay: -5s; }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            100% { transform: translate(20px, 20px) scale(1.05); }
+        }
+
+        /* --- Glass Components (Mobile Optimized) --- */
+        .glass-panel {
+            background: var(--glass-surface);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            border-top: 1px solid rgba(255, 239, 176, 0.4);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        /* --- Buttons --- */
+        .btn-gold {
+            background: linear-gradient(135deg, #b89628, #f4e4bc);
+            color: #020205;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            display: inline-block;
+            text-align: center;
+            /* Mobile touch target optimization */
+            min-height: 48px; 
+            min-width: 140px;
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.25);
+        }
+
+        /* --- Navigation --- */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(3,3,8,0.85); /* Darker nav for mobile readability */
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            color: var(--gold-primary);
+            letter-spacing: 1px;
+        }
+
+        /* --- Layout --- */
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100vh;
+            z-index: -1;
+        }
+
+        section {
+            padding: 4rem 1.5rem; /* Tighter padding for mobile */
+            position: relative;
+        }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding-top: 4rem; /* Offset for nav */
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 12vw, 6rem); /* Huge on desktop, readable on mobile */
+            background: linear-gradient(to bottom, #fff 40%, #D4AF37 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            opacity: 0; 
+        }
+
+        .hero-glass-box {
+            padding: 2rem 1.5rem;
+            width: 100%;
+            max-width: 500px;
+            margin-top: 1rem;
+            transform: translateY(30px);
+            opacity: 0;
+        }
+
+        /* Grid System (Mobile First = 1 column) */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr; /* Default mobile */
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        /* Tablet & Desktop */
+        @media (min-width: 768px) {
+            .grid-cards {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 2.5rem;
+            }
+            section {
+                padding: 8rem 5%;
+            }
+            .hero-glass-box {
+                padding: 3rem;
+            }
+        }
+
+        .card-content {
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .icon-gold {
+            font-size: 2.5rem;
+            color: var(--gold-primary);
+        }
+
+        /* --- Sequence Section --- */
+        .sequence-wrapper {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .moon-phase-text {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            text-align: center;
+            color: var(--gold-light);
+            text-shadow: 0 0 25px rgba(212, 175, 55, 0.6);
+            opacity: 0;
+            position: absolute;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        /* --- Works --- */
+        .work-card {
+            aspect-ratio: 4/5; /* Taller on mobile for impact */
+            position: relative;
+        }
+        
+        .work-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+
+        .work-overlay {
+            position: absolute;
+            bottom: 0; left: 0; width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255,255,255,0.1);
+            text-align: center;
+            padding-bottom: 2rem;
+        }
+        
+        input {
+            width: 100%;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid #333;
+            padding: 1rem;
+            color: #fff;
+            border-radius: 12px;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: var(--gold-primary);
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="ambient-light">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <nav>
+        <div class="logo">FESTA</div>
+        <a href="#book" class="btn-gold" style="padding: 0.6rem 1.2rem; min-height: auto; font-size: 0.8rem;">Book Slot</a>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <h1>Ramadan<br>Nights</h1>
+            
+            <div class="glass-panel hero-glass-box">
+                <p style="margin-bottom: 2rem;">
+                    We curate ethereal Iftar & Suhoor gatherings. 
+                    <span style="color: var(--gold-primary); display: block; margin-top: 0.5rem;">Luxury. Tradition. Serenity.</span>
+                </p>
+                <a href="#services" class="btn-gold" style="width: 100%;">View Collections</a>
+            </div>
+        </section>
+
+        <section class="services" id="services">
+            <h2 style="text-align: center; font-size: 2rem; margin-bottom: 0.5rem; color: var(--gold-primary);">The Experience</h2>
+            <p style="text-align: center; margin-bottom: 2rem;">Crafted for the Holy Month</p>
+            
+            <div class="grid-cards">
+                <div class="glass-panel card-content">
+                    <div class="icon-gold">⛺</div>
+                    <h3 style="font-size: 1.4rem;">Royal Majlis</h3>
+                    <p>Climate-controlled luxury tents with velvet seating and ambient arabesque lighting.</p>
+                </div>
+                <div class="glass-panel card-content">
+                    <div class="icon-gold">🍲</div>
+                    <h3 style="font-size: 1.4rem;">Gourmet Iftar</h3>
+                    <p>Live fusion cooking stations managed by 5-star executive chefs.</p>
+                </div>
+                <div class="glass-panel card-content">
+                    <div class="icon-gold">✨</div>
+                    <h3 style="font-size: 1.4rem;">Atmosphere</h3>
+                    <p>Bespoke lanterns, oud scenting, and projection mapping decor.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="sequence-wrapper" id="sequence">
+            <div class="moon-phase-text p1">REFLECTION</div>
+            <div class="moon-phase-text p2">GATHERING</div>
+            <div class="moon-phase-text p3">CELEBRATION</div>
+        </section>
+
+        <section class="works">
+            <h2 style="margin-bottom: 2rem; font-size: 2rem; text-align: center;">Our Portfolio</h2>
+            <div class="grid-cards">
+                <div class="glass-panel work-card">
+                    <img src="https://images.unsplash.com/photo-1555400039-358055444b7d?q=80&w=600&auto=format&fit=crop" class="work-img" alt="Iftar">
+                    <div class="work-overlay">
+                        <h3>The Dune Iftar</h3>
+                        <p style="font-size: 0.8rem; color: var(--gold-primary);">Outdoor Luxury</p>
+                    </div>
+                </div>
+                <div class="glass-panel work-card">
+                    <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=600&auto=format&fit=crop" class="work-img" alt="Suhoor">
+                    <div class="work-overlay">
+                        <h3>Grand Suhoor</h3>
+                        <p style="font-size: 0.8rem; color: var(--gold-primary);">Corporate Event</p>
+                    </div>
+                </div>
+                <div class="glass-panel work-card">
+                    <img src="https://images.unsplash.com/photo-1596701764654-e918546de54b?q=80&w=600&auto=format&fit=crop" class="work-img" alt="Decor">
+                    <div class="work-overlay">
+                        <h3>Golden Nights</h3>
+                        <p style="font-size: 0.8rem; color: var(--gold-primary);">Private Villa</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer id="book">
+            <section>
+                <div class="glass-panel" style="padding: 2rem; max-width: 600px; margin: 0 auto;">
+                    <h2 style="font-size: 2rem; margin-bottom: 1rem; color: var(--gold-primary);">Reserve Now</h2>
+                    <p style="margin-bottom: 2rem;">Limited availability for Ramadan 2025.</p>
+                    <form style="display: flex; flex-direction: column; gap: 1rem;">
+                        <input type="text" placeholder="Your Name">
+                        <input type="email" placeholder="Email Address">
+                        <button class="btn-gold" style="width: 100%; margin-top: 1rem;">Request Callback</button>
+                    </form>
+                </div>
+                <p style="margin-top: 3rem; font-size: 0.8rem; opacity: 0.5;">&copy; 2025 Festa Events.</p>
+            </section>
+        </footer>
+
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // --- 1. TEXTURE GENERATOR (Lanterns, Stars, Moons) ---
+        function createShapeTexture(type) {
+            const canvas = document.createElement('canvas');
+            const size = 128; // Higher res for clear shapes
+            canvas.width = size;
+            canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            
+            // Core Glow
+            ctx.shadowBlur = 15;
+            ctx.shadowColor = "#D4AF37";
+            
+            const cx = size/2;
+            const cy = size/2;
+
+            if (type === 'lantern') {
+                // Lantern Body
+                ctx.fillStyle = "#FFD700";
+                
+                // Top loop
+                ctx.beginPath();
+                ctx.arc(cx, cy - 25, 4, 0, Math.PI*2);
+                ctx.fill();
+
+                // Dome
+                ctx.beginPath();
+                ctx.moveTo(cx - 10, cy - 20);
+                ctx.quadraticCurveTo(cx, cy - 35, cx + 10, cy - 20);
+                ctx.fill();
+
+                // Main Housing (Rectangle)
+                ctx.fillRect(cx - 12, cy - 20, 24, 35);
+                
+                // Bottom Point
+                ctx.beginPath();
+                ctx.moveTo(cx - 12, cy + 15);
+                ctx.lineTo(cx, cy + 30);
+                ctx.lineTo(cx + 12, cy + 15);
+                ctx.fill();
+
+                // Inner Glow (Window)
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = "#FFF";
+                ctx.globalAlpha = 0.8;
+                ctx.fillRect(cx - 6, cy - 10, 12, 20);
+
+            } else if (type === 'moon') {
+                ctx.fillStyle = "#F4E4BC";
+                ctx.beginPath();
+                ctx.arc(cx, cy, 30, 0, Math.PI * 2, false);
+                ctx.globalCompositeOperation = 'source-over';
+                ctx.fill();
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath();
+                ctx.arc(cx + 15, cy - 8, 25, 0, Math.PI * 2, false);
+                ctx.fill();
+            } else if (type === 'star') {
+                ctx.fillStyle = "#FFF";
+                ctx.beginPath();
+                const outerRadius = 20;
+                const innerRadius = 5;
+                for (let i = 0; i < 8; i++) {
+                    let angle = (i * Math.PI) / 4;
+                    let radius = (i % 2 === 0) ? outerRadius : innerRadius;
+                    let x = cx + Math.cos(angle) * radius;
+                    let y = cy + Math.sin(angle) * radius;
+                    if (i === 0) ctx.moveTo(x, y);
+                    else ctx.lineTo(x, y);
+                }
+                ctx.fill();
+            }
+            
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        // --- 2. THREE.JS SETUP ---
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        
+        // Mobile optimization: Less depth, closer camera
+        const isMobile = window.innerWidth < 768;
+        camera.position.z = isMobile ? 6 : 5;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const particlesGroup = new THREE.Group();
+        scene.add(particlesGroup);
+
+        // -- Particle Generators --
+        function addParticles(type, count, size, speedY) {
+            const geo = new THREE.BufferGeometry();
+            const pos = new Float32Array(count * 3);
+            const speeds = new Float32Array(count); // Individual speeds
+
+            for(let i=0; i<count*3; i+=3) {
+                pos[i] = (Math.random() - 0.5) * (isMobile ? 12 : 20);   // X spread
+                pos[i+1] = (Math.random() - 0.5) * (isMobile ? 20 : 15); // Y spread
+                pos[i+2] = (Math.random() - 0.5) * 10; // Z depth
+                
+                speeds[i/3] = Math.random() * 0.5 + 0.5; // Random speed factor
+            }
+
+            geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            geo.setAttribute('aSpeed', new THREE.BufferAttribute(speeds, 1));
+
+            const mat = new THREE.PointsMaterial({
+                size: size,
+                map: createShapeTexture(type),
+                transparent: true,
+                opacity: type === 'lantern' ? 0.9 : 0.7,
+                depthWrite: false,
+                blending: THREE.AdditiveBlending
+            });
+
+            const points = new THREE.Points(geo, mat);
+            points.userData = { speedY: speedY, type: type }; // Store speed data
+            particlesGroup.add(points);
+            return points;
+        }
+
+        // Adjust counts for mobile performance
+        const lanternCount = isMobile ? 15 : 30;
+        const starCount = isMobile ? 150 : 400;
+        const moonCount = isMobile ? 5 : 10;
+
+        const lanterns = addParticles('lantern', lanternCount, isMobile ? 0.5 : 0.4, 0.005);
+        const stars = addParticles('star', starCount, 0.15, 0); // Stars don't float up
+        const moons = addParticles('moon', moonCount, 0.6, 0.002);
+
+        // --- 3. ANIMATION LOOP ---
+        const clock = new THREE.Clock();
+        let mouseY = 0;
+        let mouseX = 0;
+
+        // Optimization: Throttle mouse event or remove on touch
+        if (!isMobile) {
+            document.addEventListener('mousemove', (e) => {
+                mouseX = (e.clientX / window.innerWidth) - 0.5;
+                mouseY = (e.clientY / window.innerHeight) - 0.5;
+            });
+        }
+
+        function animate() {
+            const time = clock.getElapsedTime();
+            
+            // General rotation
+            particlesGroup.rotation.y = time * 0.03;
+            if (!isMobile) {
+                particlesGroup.rotation.x = mouseY * 0.1;
+            }
+
+            // Lanterns Float Up logic
+            [lanterns, moons].forEach(pSystem => {
+                const positions = pSystem.geometry.attributes.position.array;
+                const speeds = pSystem.geometry.attributes.aSpeed.array;
+                const baseSpeed = pSystem.userData.speedY;
+
+                for(let i=1; i<positions.length; i+=3) {
+                    // Move Y up based on baseSpeed * individual random speed
+                    positions[i] += baseSpeed * speeds[(i-1)/3];
+                    
+                    // Reset if it goes off top of screen
+                    if(positions[i] > 10) {
+                        positions[i] = -10;
+                        // Randomize X again for variety
+                        positions[i-1] = (Math.random() - 0.5) * 20;
+                    }
+                }
+                pSystem.geometry.attributes.position.needsUpdate = true;
+            });
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            const newIsMobile = window.innerWidth < 768;
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- 4. GSAP SCROLL ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        const tl = gsap.timeline();
+        tl.to(".hero h1", { opacity: 1, duration: 1.5, ease: "power2.out" })
+          .to(".hero-glass-box", { opacity: 1, y: 0, duration: 1 }, "-=1");
+
+        // Sequence (Shorter scroll for mobile)
+        const seqTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".sequence-wrapper",
+                start: "top top",
+                end: isMobile ? "+=1500" : "+=2500", // Shorter distance on mobile
+                scrub: 1,
+                pin: true
+            }
+        });
+
+        seqTl.to(".p1", { opacity: 1, scale: 1.1, duration: 1 })
+             .to(".p1", { opacity: 0, scale: 1.2, duration: 1 })
+             .to(".p2", { opacity: 1, scale: 1.1, duration: 1 })
+             .to(".p2", { opacity: 0, scale: 1.2, duration: 1 })
+             .to(".p3", { opacity: 1, scale: 1.1, duration: 1 });
+
+    </script>
+</body>
+</html>
