@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Gallery | Festa Ramadan</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+
+    <div class="ambient-light">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <div id="canvas-container"></div>
+
+    <header class="site-header">
+        <nav class="nav-container">
+            <a href="index.html" class="logo-link">
+                <div class="logo">FESTA</div>
+            </a>
+            <div class="nav-actions">
+                <a href="index.html#book" class="btn-gold nav-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line>
+                        <line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                    </svg>
+                    Book Slot
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <header class="page-header">
+        <h1>Visual Chronicle</h1>
+    </header>
+
+    <div class="filter-container">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="iftar">Iftar</button>
+        <button class="filter-btn" data-filter="decor">Decor</button>
+    </div>
+
+    <div class="gallery-grid">
+        <div class="gallery-item" data-category="iftar">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1200&auto=format&fit=crop" class="gallery-img" alt="Iftar">
+            <div class="item-overlay">
+                <span class="item-category">Iftar Gathering</span>
+                <h3 class="item-title">The Royal Table</h3>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="suhoor">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1200&auto=format&fit=crop" class="gallery-img" alt="Suhoor">
+            <div class="item-overlay">
+                <span class="item-category">Suhoor</span>
+                <h3 class="item-title">Midnight Majlis</h3>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="decor">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1200&auto=format&fit=crop" class="gallery-img" alt="Decor">
+            <div class="item-overlay">
+                <span class="item-category">Decor & Lights</span>
+                <h3 class="item-title">Golden Pathways</h3>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="iftar">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1200&auto=format&fit=crop" class="gallery-img" alt="Iftar">
+            <div class="item-overlay">
+                <span class="item-category">Iftar Gathering</span>
+                <h3 class="item-title">Dune Banquet</h3>
+            </div>
+        </div>
+         <div class="gallery-item" data-category="decor">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1200&auto=format&fit=crop" class="gallery-img" alt="Decor">
+            <div class="item-overlay">
+                <span class="item-category">Decor</span>
+                <h3 class="item-title">Lunar Projection</h3>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="suhoor">
+            <img src="https://images.unsplash.com/photo-1519750783826-e2420f4d687f?q=80&w=1200&auto=format&fit=crop" class="gallery-img" alt="Suhoor">
+            <div class="item-overlay">
+                <span class="item-category">Suhoor</span>
+                <h3 class="item-title">Tent of Stars</h3>
+            </div>
+        </div>
+    </div>
+
+    <div id="lightbox">
+        <button class="lb-btn lb-close">&times;</button>
+        <button class="lb-btn lb-prev">&#10094;</button>
+        <button class="lb-btn lb-next">&#10095;</button>
+        
+        <div class="lightbox-content">
+            <img src="" alt="" class="lightbox-img">
+            <h3 class="lightbox-caption"></h3>
+        </div>
+    </div>
+
+     <!-- Footer Section -->
+    <footer class="site-footer">
+        <p style="font-size: 0.8rem; opacity: 0.5;">&copy; 2026 Festa Events. All Right Reserved</p>
+        <p style="margin-top: 0.5rem; font-size: 0.8rem;"><i class="fas fa-heart"></i> Designed and Developed by <a
+                href="https://www.instagram.com/m_nihal_13._/" target="_blank" style="text-decoration: none;"><span
+                    style="color: var(--gold-primary); font-weight: 900; font-family: 'M PLUS Rounded 1c', sans-serif;"> - Nihal</span></a></p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+    <script>
+        // --- 1. FILTER FUNCTIONALITY ---
+        const buttons = document.querySelectorAll('.filter-btn');
+        const items = document.querySelectorAll('.gallery-item');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                buttons.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                const filter = btn.getAttribute('data-filter');
+
+                items.forEach(item => {
+                    const category = item.getAttribute('data-category');
+                    if (filter === 'all' || filter === category) {
+                        item.classList.remove('hidden-by-filter'); // Mark as visible for lightbox
+                        gsap.to(item, { display: "block", opacity: 1, scale: 1, duration: 0.4 });
+                    } else {
+                        item.classList.add('hidden-by-filter'); // Mark as hidden
+                        gsap.to(item, { opacity: 0, scale: 0.8, duration: 0.3, onComplete: () => {
+                            item.style.display = "none";
+                        }});
+                    }
+                });
+            });
+        });
+
+        // --- 2. LIGHTBOX FUNCTIONALITY ---
+        const lightbox = document.getElementById('lightbox');
+        const lbImg = document.querySelector('.lightbox-img');
+        const lbCaption = document.querySelector('.lightbox-caption');
+        const closeBtn = document.querySelector('.lb-close');
+        const nextBtn = document.querySelector('.lb-next');
+        const prevBtn = document.querySelector('.lb-prev');
+
+        let currentIndex = 0;
+        let visibleItems = []; // Array to store currently filtered items
+
+        function updateVisibleItems() {
+            // Get all items that are NOT hidden by filter
+            visibleItems = Array.from(document.querySelectorAll('.gallery-item:not(.hidden-by-filter)'));
+        }
+
+        function openLightbox(index) {
+            updateVisibleItems();
+            // Map the clicked item to the index in the visibleItems array
+            // (We need to find which visible item matches the clicked item)
+            // But simplify: we just clicked an element. Let's find its index in visibleItems.
+            const clickedItem = items[index]; // This comes from the global list
+            
+            // Find this item in our filtered list
+            const visibleIndex = visibleItems.indexOf(clickedItem);
+            
+            if (visibleIndex > -1) {
+                currentIndex = visibleIndex;
+                updateLightboxContent();
+                lightbox.classList.add('active');
+                // GSAP Entrance
+                gsap.fromTo(lbImg, { scale: 0.8, opacity: 0 }, { scale: 1, opacity: 1, duration: 0.4, ease: "back.out(1.7)" });
+            }
+        }
+
+        function updateLightboxContent() {
+            const item = visibleItems[currentIndex];
+            const img = item.querySelector('img');
+            const title = item.querySelector('.item-title').innerText;
+            
+            lbImg.src = img.src;
+            lbCaption.innerText = title;
+        }
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+        }
+
+        function nextImage(e) {
+            e.stopPropagation(); // Prevent closing when clicking button
+            currentIndex = (currentIndex + 1) % visibleItems.length;
+            // Quick fade out/in for transition
+            gsap.to(lbImg, { opacity: 0, duration: 0.2, onComplete: () => {
+                updateLightboxContent();
+                gsap.to(lbImg, { opacity: 1, duration: 0.2 });
+            }});
+        }
+
+        function prevImage(e) {
+            e.stopPropagation();
+            currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+            gsap.to(lbImg, { opacity: 0, duration: 0.2, onComplete: () => {
+                updateLightboxContent();
+                gsap.to(lbImg, { opacity: 1, duration: 0.2 });
+            }});
+        }
+
+        // Event Listeners for Grid Items
+        items.forEach((item, index) => {
+            item.addEventListener('click', () => openLightbox(index));
+        });
+
+        // Event Listeners for Controls
+        closeBtn.addEventListener('click', closeLightbox);
+        nextBtn.addEventListener('click', nextImage);
+        prevBtn.addEventListener('click', prevImage);
+        
+        // Close on background click
+        lightbox.addEventListener('click', (e) => {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+                closeLightbox();
+            }
+        });
+
+        // Keyboard Navigation
+        document.addEventListener('keydown', (e) => {
+            if (!lightbox.classList.contains('active')) return;
+            if (e.key === 'Escape') closeLightbox();
+            if (e.key === 'ArrowRight') nextBtn.click();
+            if (e.key === 'ArrowLeft') prevBtn.click();
+        });
+
+
+        // --- 3. THREE.JS BACKGROUND ---
+        function createShapeTexture(type) {
+            const canvas = document.createElement('canvas');
+            const size = 128; 
+            canvas.width = size; canvas.height = size;
+            const ctx = canvas.getContext('2d');
+            ctx.shadowBlur = 15; ctx.shadowColor = "#D4AF37";
+            const cx = size/2; const cy = size/2;
+
+            if (type === 'lantern') {
+                ctx.fillStyle = "#FFD700";
+                ctx.beginPath(); ctx.arc(cx, cy - 25, 4, 0, Math.PI*2); ctx.fill();
+                ctx.beginPath(); ctx.moveTo(cx - 10, cy - 20); ctx.quadraticCurveTo(cx, cy - 35, cx + 10, cy - 20); ctx.fill();
+                ctx.fillRect(cx - 12, cy - 20, 24, 35);
+                ctx.beginPath(); ctx.moveTo(cx - 12, cy + 15); ctx.lineTo(cx, cy + 30); ctx.lineTo(cx + 12, cy + 15); ctx.fill();
+                ctx.shadowBlur = 0; ctx.fillStyle = "#FFF"; ctx.globalAlpha = 0.8; ctx.fillRect(cx - 6, cy - 10, 12, 20);
+            } else if (type === 'moon') {
+                ctx.fillStyle = "#F4E4BC";
+                ctx.beginPath(); ctx.arc(cx, cy, 30, 0, Math.PI * 2, false); ctx.globalCompositeOperation = 'source-over'; ctx.fill();
+                ctx.globalCompositeOperation = 'destination-out';
+                ctx.beginPath(); ctx.arc(cx + 15, cy - 8, 25, 0, Math.PI * 2, false); ctx.fill();
+            } else if (type === 'star') {
+                ctx.fillStyle = "#FFF"; ctx.beginPath();
+                const outerRadius = 20; const innerRadius = 5;
+                for (let i = 0; i < 8; i++) {
+                    let angle = (i * Math.PI) / 4;
+                    let radius = (i % 2 === 0) ? outerRadius : innerRadius;
+                    let x = cx + Math.cos(angle) * radius; let y = cy + Math.sin(angle) * radius;
+                    if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+                }
+                ctx.fill();
+            }
+            return new THREE.CanvasTexture(canvas);
+        }
+
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const isMobile = window.innerWidth < 768;
+        camera.position.z = isMobile ? 6 : 5;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        const particlesGroup = new THREE.Group();
+        scene.add(particlesGroup);
+
+        function addParticles(type, count, size, speedY) {
+            const geo = new THREE.BufferGeometry();
+            const pos = new Float32Array(count * 3);
+            const speeds = new Float32Array(count);
+            for(let i=0; i<count*3; i+=3) {
+                pos[i] = (Math.random() - 0.5) * 20;
+                pos[i+1] = (Math.random() - 0.5) * 20;
+                pos[i+2] = (Math.random() - 0.5) * 10;
+                speeds[i/3] = Math.random() * 0.5 + 0.5;
+            }
+            geo.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+            geo.setAttribute('aSpeed', new THREE.BufferAttribute(speeds, 1));
+            const mat = new THREE.PointsMaterial({
+                size: size, map: createShapeTexture(type), transparent: true,
+                opacity: type === 'lantern' ? 0.9 : 0.7, depthWrite: false, blending: THREE.AdditiveBlending
+            });
+            const points = new THREE.Points(geo, mat);
+            points.userData = { speedY: speedY };
+            particlesGroup.add(points);
+            return points;
+        }
+
+        const lanternCount = 40; const starCount = 450; const moonCount = 15;
+        const lanterns = addParticles('lantern', lanternCount, isMobile ? 0.5 : 0.4, 0.005);
+        const stars = addParticles('star', starCount, 0.15, 0);
+        const moons = addParticles('moon', moonCount, 0.6, 0.002);
+
+        const clock = new THREE.Clock();
+        function animate() {
+            const time = clock.getElapsedTime();
+            particlesGroup.rotation.y = time * 0.03;
+
+            [lanterns, moons].forEach(pSystem => {
+                const positions = pSystem.geometry.attributes.position.array;
+                const speeds = pSystem.geometry.attributes.aSpeed.array;
+                const baseSpeed = pSystem.userData.speedY;
+                for(let i=1; i<positions.length; i+=3) {
+                    positions[i] += baseSpeed * speeds[(i-1)/3];
+                    if(positions[i] > 10) {
+                        positions[i] = -10;
+                        positions[i-1] = (Math.random() - 0.5) * 20;
+                    }
+                }
+                pSystem.geometry.attributes.position.needsUpdate = true;
+            });
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // Entrance Animation
+        gsap.from(".gallery-item", {
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.1, ease: "power2.out"
+        });
+    </script>
+</body>
+</html>

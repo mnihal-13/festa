@@ -195,6 +195,20 @@ const lenis = new Lenis({
 
 window.lenis = lenis;
 
+// --- Smooth Scroll for Anchor Links ---
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId === '#' || targetId === '') return;
+
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+            e.preventDefault();
+            lenis.scrollTo(targetElement);
+        }
+    });
+});
+
 gsap.registerPlugin(ScrollTrigger);
 
 lenis.on('scroll', ScrollTrigger.update);
@@ -202,7 +216,7 @@ gsap.ticker.add((time) => { lenis.raf(time * 1000); });
 gsap.ticker.lagSmoothing(0);
 
 // --- Hero Load Animation ---
-const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+const heroTl = gsap.timeline({ defaults: { ease: "power3.out", overwrite: "auto" } });
 
 heroTl
     // Tagline slides down
@@ -410,13 +424,13 @@ loadMyBookings();
 calendarDays.forEach(day => {
     day.addEventListener('click', () => {
         if (day.classList.contains('booked')) return;
-        
+
         // Remove active class from all
         document.querySelectorAll('.calendar-day').forEach(d => d.classList.remove('selected'));
-        
+
         // Add active class to clicked
         day.classList.add('selected');
-        
+
         // Update hidden input
         dateInput.value = day.getAttribute('data-val');
     });
